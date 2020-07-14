@@ -109,7 +109,12 @@ export function useDerivedSwapInfo(): {
 
   const bestTradeExactIn = useTradeExactIn(isExactIn ? parsedAmount : undefined, tokenOut ?? undefined)
   const bestTradeExactOut = useTradeExactOut(tokenIn ?? undefined, !isExactIn ? parsedAmount : undefined)
-
+  console.log("==========>isExactIn")
+  console.log(isExactIn)
+  console.log("==========>bestTradeExactIn")
+  console.log(bestTradeExactIn)
+  console.log("==========>bestTradeExactOut")
+  console.log(bestTradeExactOut)
   const bestTrade = isExactIn ? bestTradeExactIn : bestTradeExactOut
 
   const tokenBalances = {

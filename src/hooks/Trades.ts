@@ -9,9 +9,11 @@ import { useActiveWeb3React } from './index'
 
 function useAllCommonPairs(tokenA?: Token, tokenB?: Token): Pair[] {
   const { chainId } = useActiveWeb3React()
-
+    console.log("==========>chainId")
+    console.log(chainId)
   const bases: Token[] = chainId ? BASES_TO_CHECK_TRADES_AGAINST[chainId] : []
-
+    console.log("==========>bases")
+    console.log(bases)
   const allPairCombinations: [Token | undefined, Token | undefined][] = useMemo(
     () => [
       // the direct pair
@@ -25,9 +27,9 @@ function useAllCommonPairs(tokenA?: Token, tokenB?: Token): Pair[] {
     ],
     [tokenA, tokenB, bases]
   )
-
   const allPairs = usePairs(allPairCombinations)
-
+    console.log("==========>allPairs")
+    console.log(allPairs)
   // only pass along valid pairs, non-duplicated pairs
   return useMemo(
     () =>
@@ -50,7 +52,8 @@ function useAllCommonPairs(tokenA?: Token, tokenB?: Token): Pair[] {
  */
 export function useTradeExactIn(amountIn?: TokenAmount, tokenOut?: Token): Trade | null {
   const allowedPairs = useAllCommonPairs(amountIn?.token, tokenOut)
-
+    console.log("==========>allowedPairs")
+    console.log(allowedPairs)
   return useMemo(() => {
     if (amountIn && tokenOut && allowedPairs.length > 0) {
       return Trade.bestTradeExactIn(allowedPairs, amountIn, tokenOut, { maxHops: 3, maxNumResults: 1 })[0] ?? null

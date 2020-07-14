@@ -54,7 +54,7 @@ const CloseIcon = styled.div`
 `
 
 const HELP_TEXT = `
-The Uniswap V2 smart contracts are designed to support any ERC20 token on Ethereum. Any token can be
+The Miniswap smart contracts are designed to support any ERC20 token on Ethereum. Any token can be
 loaded into the interface by entering its Ethereum address into the search field or passing it as a URL
 parameter.
 `

@@ -16,7 +16,9 @@ interface TradePriceProps {
 
 export default function TradePrice({ price, inputToken, outputToken, showInverted, setShowInverted }: TradePriceProps) {
   const theme = useContext(ThemeContext)
-
+  console.log("============>price")
+  console.log(price)
+  console.log(price?.toSignificant())
   const formattedPrice = showInverted ? price?.toSignificant(6) : price?.invert()?.toSignificant(6)
 
   const show = Boolean(inputToken && outputToken)

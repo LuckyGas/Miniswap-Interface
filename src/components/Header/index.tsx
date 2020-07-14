@@ -154,33 +154,33 @@ export default function Header() {
   return (
     <HeaderFrame>
       <MigrateBanner>
-         Miniswap is live! Read the&nbsp;
-        <ExternalLink href="https://uniswap.org/blog/launch-uniswap-v2/">
-          <b>blog post ↗</b>
-        </ExternalLink>
-        &nbsp;or&nbsp;
-        <StyledInternalLink to="/migrate/v1">
-          <b>migrate your liquidity ↗</b>
-        </StyledInternalLink>
-        .
+        {/* Miniswap is live! Read the&nbsp;*/}
+        {/*<ExternalLink href="https://uniswap.org/blog/launch-uniswap-v2/">*/}
+        {/*  <b>blog post ↗</b>*/}
+        {/*</ExternalLink>*/}
+        {/*&nbsp;or&nbsp;*/}
+        {/*<StyledInternalLink to="/migrate/v1">*/}
+        {/*  <b>migrate your liquidity ↗</b>*/}
+        {/*</StyledInternalLink>*/}
+        {/*.*/}
       </MigrateBanner>
       <RowBetween style={{ alignItems: 'flex-start' }} padding="1rem 1rem 0 1rem">
         <HeaderElement>
           <Title>
-            <UniIcon id="link" to="/">
-              <img src={isDark ? LogoDark : Logo} alt="logo" />
-            </UniIcon>
-            {!isMobile && (
-              <TitleText>
-                <HistoryLink id="link" to="/">
-                  <img
-                    style={{ marginLeft: '4px', marginTop: '4px' }}
-                    src={isDark ? WordmarkDark : Wordmark}
-                    alt="logo"
-                  />
-                </HistoryLink>
-              </TitleText>
-            )}
+            {/*<UniIcon id="link" to="/">*/}
+            {/*  <img src={isDark ? LogoDark : Logo} alt="logo" />*/}
+            {/*</UniIcon>*/}
+            {/*{!isMobile && (*/}
+            {/*  <TitleText>*/}
+            {/*    <HistoryLink id="link" to="/">*/}
+            {/*      <img*/}
+            {/*        style={{ marginLeft: '4px', marginTop: '4px' }}*/}
+            {/*        src={isDark ? WordmarkDark : Wordmark}*/}
+            {/*        alt="logo"*/}
+            {/*      />*/}
+            {/*    </HistoryLink>*/}
+            {/*  </TitleText>*/}
+            {/*)}*/}
           </Title>
         </HeaderElement>
         <HeaderControls>
@@ -198,9 +198,9 @@ export default function Header() {
             </AccountElement>
           </HeaderElement>
           <HeaderElementWrap>
-            <VersionSwitch />
+            {/*<VersionSwitch />*/}
             <Settings />
-            <Menu />
+            {/*<Menu />*/}
           </HeaderElementWrap>
         </HeaderControls>
       </RowBetween>

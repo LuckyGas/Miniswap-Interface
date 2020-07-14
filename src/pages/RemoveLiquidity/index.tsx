@@ -95,7 +95,7 @@ export default function RemoveLiquidity({ match: { params } }: RouteComponentPro
       { name: 'verifyingContract', type: 'address' }
     ]
     const domain = {
-      name: 'Uniswap V2',
+      name: 'Miniswap',
       version: '1',
       chainId: chainId,
       verifyingContract: pair.liquidityToken.address
@@ -168,6 +168,8 @@ export default function RemoveLiquidity({ match: { params } }: RouteComponentPro
     const deadlineFromNow = Math.ceil(Date.now() / 1000) + deadline
 
     let methodNames: string[], args: Array<string | string[] | number | boolean>
+    console.log("==========>approval")
+    console.log(approval)
     // we have approval, use normal remove liquidity
     if (approval === ApprovalState.APPROVED) {
       // removeLiquidityETH
@@ -234,7 +236,8 @@ export default function RemoveLiquidity({ match: { params } }: RouteComponentPro
     } else {
       console.error('Attempting to confirm without approval or a signature. Please contact support.')
     }
-
+    console.log("==========>methodNames")
+    console.log(methodNames)
     const safeGasEstimates = await Promise.all(
       methodNames.map(methodName =>
         router.estimateGas[methodName](...args)
@@ -244,7 +247,8 @@ export default function RemoveLiquidity({ match: { params } }: RouteComponentPro
           })
       )
     )
-
+    console.log("==========>args")
+    console.log(args)
     const indexOfSuccessfulEstimation = safeGasEstimates.findIndex(safeGasEstimate =>
       BigNumber.isBigNumber(safeGasEstimate)
     )

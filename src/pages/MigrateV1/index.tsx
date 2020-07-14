@@ -75,15 +75,15 @@ export default function MigrateV1({ history }: RouteComponentProps) {
   return (
     <BodyWrapper style={{ padding: 24 }}>
       <AutoColumn gap="16px">
-        <AutoRow style={{ alignItems: 'center', justifyContent: 'space-between' }} gap="8px">
-          <div style={{ cursor: 'pointer' }}>
-            <ArrowLeft onClick={handleBackClick} />
-          </div>
-          <TYPE.mediumHeader>Migrate V1 Liquidity</TYPE.mediumHeader>
-          <div>
-            <QuestionHelper text="Migrate your liquidity tokens from Uniswap V1 to Uniswap V2." />
-          </div>
-        </AutoRow>
+        {/*<AutoRow style={{ alignItems: 'center', justifyContent: 'space-between' }} gap="8px">*/}
+        {/*  <div style={{ cursor: 'pointer' }}>*/}
+        {/*    <ArrowLeft onClick={handleBackClick} />*/}
+        {/*  </div>*/}
+        {/*  <TYPE.mediumHeader>Migrate V1 Liquidity</TYPE.mediumHeader>*/}
+        {/*  <div>*/}
+        {/*    <QuestionHelper text="Migrate your liquidity tokens from Uniswap V1 to Uniswap V2." />*/}
+        {/*  </div>*/}
+        {/*</AutoRow>*/}
 
         <TYPE.body style={{ marginBottom: 8, fontWeight: 400 }}>
           For each pool shown below, click migrate to remove your liquidity from Uniswap V1 and deposit it into Uniswap

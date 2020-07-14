@@ -168,7 +168,7 @@ export default function RemoveV1Exchange({
           </div>
           <TYPE.mediumHeader>Remove V1 Liquidity</TYPE.mediumHeader>
           <div>
-            <QuestionHelper text="Remove your Uniswap V1 liquidity tokens." />
+            <QuestionHelper text="Remove your Miniswap liquidity tokens." />
           </div>
         </AutoRow>
 

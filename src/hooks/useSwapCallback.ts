@@ -102,11 +102,13 @@ export function useSwapCallback(
 
       const contract: Contract | null =
         tradeVersion === Version.v2 ? getRouterContract(chainId, library, account) : v1Exchange
+      console.log("============>contract")
       console.log(contract)
       if (!contract) {
         throw new Error('Failed to get a swap contract')
       }
-      var f = contract.factory.call();
+      var f = await contract.factory.call();
+      console.log("============>f")
       console.log(f)
       const path = trade.route.path.map(t => t.address)
 
