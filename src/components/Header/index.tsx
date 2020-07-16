@@ -23,6 +23,7 @@ import Menu from '../Menu'
 import Row, { RowBetween } from '../Row'
 import Web3Status from '../Web3Status'
 import VersionSwitch from './VersionSwitch'
+import QianBao from '../../assets/QianBao.png'
 
 const HeaderFrame = styled.div`
   display: flex;
@@ -33,6 +34,8 @@ const HeaderFrame = styled.div`
   top: 0;
   position: absolute;
   z-index: 2;
+  height:100px;
+  line-height:100px;
   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
     padding: 12px 0 0 0;
     width: calc(100%);
@@ -91,15 +94,31 @@ const TestnetWrapper = styled.div`
   width: fit-content;
   margin-left: 10px;
   pointer-events: auto;
+  // display:flex;
+  // border:1px solid yellow;
+  // alignItems:center
 `
 
+const NetworkCardC = styled(YellowCard)`
+  // width: fit-content;
+  // margin-right: 10px;
+  // border-radius: 12px;
+  // padding: 8px 12px;
+`
 const NetworkCard = styled(YellowCard)`
-  width: fit-content;
-  margin-right: 10px;
-  border-radius: 12px;
-  padding: 8px 12px;
-`
+border: 2px solid #fcb0aa;
+// border-radius: 34px;
+background: #fff;
+font-size: 14px;
+height: 32px
+display:flex;
+align-items:center;
+// line-height: 28px;
+color:#000000;
+padding-left:30px;
+padding-right: 30px;
 
+`
 const UniIcon = styled(HistoryLink)<{ to: string }>`
   transition: transform 0.3s ease;
   :hover {
@@ -153,7 +172,7 @@ export default function Header() {
 
   return (
     <HeaderFrame>
-      <MigrateBanner>
+      {/* <MigrateBanner> */}
         {/* Miniswap is live! Read the&nbsp;*/}
         {/*<ExternalLink href="https://uniswap.org/blog/launch-uniswap-v2/">*/}
         {/*  <b>blog post ↗</b>*/}
@@ -163,13 +182,13 @@ export default function Header() {
         {/*  <b>migrate your liquidity ↗</b>*/}
         {/*</StyledInternalLink>*/}
         {/*.*/}
-      </MigrateBanner>
-      <RowBetween style={{ alignItems: 'flex-start' }} padding="1rem 1rem 0 1rem">
+      {/* </MigrateBanner> */}
+      <RowBetween style={{ maxWidth:'1200px',margin:'0 auto',height:"100px"}}>
         <HeaderElement>
-          <Title>
-            {/*<UniIcon id="link" to="/">*/}
-            {/*  <img src={isDark ? LogoDark : Logo} alt="logo" />*/}
-            {/*</UniIcon>*/}
+          <Title >
+            <UniIcon id="link" to="/" style={{display:'flex',alignItems:'center'}}>
+               <img src={isDark ? LogoDark : Logo} alt="logo" />
+            </UniIcon>
             {/*{!isMobile && (*/}
             {/*  <TitleText>*/}
             {/*    <HistoryLink id="link" to="/">*/}
@@ -183,21 +202,31 @@ export default function Header() {
             {/*)}*/}
           </Title>
         </HeaderElement>
-        <HeaderControls>
+        
+        <HeaderControls style={{display:'flex',alignItems:'center',height:'100px'}} >
           <HeaderElement>
+            <div style={{marginRight:'70px'}}>Developers</div>
+            <div style={{marginRight:'80px'}} >Whitepaper</div>
             <TestnetWrapper>
-              {!isMobile && NETWORK_LABELS[chainId] && <NetworkCard>{NETWORK_LABELS[chainId]}</NetworkCard>}
+              
+              {!isMobile && NETWORK_LABELS[chainId] && <NetworkCard style={{paddingTop:"0",paddingBottom:0}}>
+                  
+                    <img src={QianBao} style={{width:"26px",height:'18px',marginRight:'10px'}}/>
+                    <span>{NETWORK_LABELS[chainId]}</span>
+                  
+                
+                </NetworkCard>}
             </TestnetWrapper>
-            <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
+            {/* <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
               {account && userEthBalance ? (
                 <Text style={{ flexShrink: 0 }} pl="0.75rem" pr="0.5rem" fontWeight={500}>
                   {userEthBalance?.toSignificant(4)} ETH
                 </Text>
               ) : null}
               <Web3Status />
-            </AccountElement>
+            </AccountElement> */}
           </HeaderElement>
-          <HeaderElementWrap>
+          <HeaderElementWrap style={{marginLeft:'60px'}}>
             {/*<VersionSwitch />*/}
             <Settings />
             {/*<Menu />*/}

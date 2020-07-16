@@ -19,6 +19,8 @@ import { ButtonError } from '../Button'
 import { useSettingsMenuOpen, useToggleSettingsMenu } from '../../state/application/hooks'
 import { Text } from 'rebass'
 import Modal from '../Modal'
+import IconLang from '../../assets/icon_en.png'
+import IconDown from '../../assets/icon_down.png'
 
 const StyledMenuIcon = styled(Settings)`
   height: 20px;
@@ -49,11 +51,16 @@ const StyledMenuButton = styled.button`
   background-color: transparent;
   margin: 0;
   padding: 0;
-  height: 35px;
+  height: 40px;
   background-color: ${({ theme }) => theme.bg3};
+  background-color: #ffffff;
 
-  padding: 0.15rem 0.5rem;
+
+  // padding: 0.15rem 0.5rem;
+  padding-left:1rem;
+  padding-right: 1rem;
   border-radius: 0.5rem;
+  border-radius: 1rem;
 
   :hover,
   :focus {
@@ -194,7 +201,10 @@ export default function SettingsTab() {
         </ModalContentWrapper>
       </Modal>
       <StyledMenuButton onClick={toggle}>
-        <StyledMenuIcon />
+        {/* <StyledMenuIcon /> */}
+        <span style={{display:"flex",alignItems:'center'}}
+        ><img src={IconDown} style={{marginRight:'20px'}}/><img src={IconLang} style={{height:"25px"}}/></span>
+
         {expertMode && (
           <EmojiWrapper>
             <span role="img" aria-label="wizard-icon">
