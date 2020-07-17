@@ -3,6 +3,7 @@ import { HashRouter, Route, Switch } from 'react-router-dom'
 import styled from 'styled-components'
 import GoogleAnalyticsReporter from '../components/analytics/GoogleAnalyticsReporter'
 import Header from '../components/Header'
+import Footer from '../components/footer'
 import Popups from '../components/Popups'
 import Web3ReactManager from '../components/Web3ReactManager'
 import DarkModeQueryParamReader from '../theme/DarkModeQueryParamReader'
@@ -17,13 +18,16 @@ import RemoveLiquidity from './RemoveLiquidity'
 import Send from './Send'
 import Swap from './Swap'
 import { RedirectPathToSwapOnly, RedirectToSwap } from './Swap/redirects'
-import NavigationTabs from '../components/NavigationTabs'
-
+import NavigationTabs from '../components/NavigationTabs';
+import bgImg from '../assets/bg1.png';
+const bgImgUrl = ` url(${bgImg}) top right no-repeat`
 const AppWrapper = styled.div`
   display: flex;
   flex-flow: column;
   align-items: flex-start;
   overflow-x: hidden;
+  background: ${bgImgUrl};
+  background-size: 65% 100vh;
 `
 
 const HeaderWrapper = styled.div`
@@ -84,7 +88,10 @@ export default function App() {
               </Switch>
             </Web3ReactManager>
             <Marginer />
+           
           </BodyWrapper>
+          <Footer/>
+          {/* 底部 */}
         </AppWrapper>
       </HashRouter>
     </Suspense>

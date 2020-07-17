@@ -13,6 +13,8 @@ export const BodyWrapper = styled.div`
   padding: 1rem;
   padding-left: 5%;
   padding-right: 5%;
+  padding-top:5%;
+  padding-bottom: 3%;
 `
 
 /**
