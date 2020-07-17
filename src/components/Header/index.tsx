@@ -83,6 +83,7 @@ const AccountElement = styled.div<{ active: boolean }>`
   border-radius: 12px;
   white-space: nowrap;
   width: 100%;
+  display:none
 
   :focus {
     border: 1px solid blue;
@@ -222,14 +223,14 @@ export default function Header() {
                 </NetworkCard>}
 
             </TestnetWrapper>
-            {/* <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
+            <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
               {account && userEthBalance ? (
                 <Text style={{ flexShrink: 0 }} pl="0.75rem" pr="0.5rem" fontWeight={500}>
                   {userEthBalance?.toSignificant(4)} ETH
                 </Text>
               ) : null}
               <Web3Status />
-            </AccountElement> */}
+            </AccountElement>
           </HeaderElement>
           { isMobile ? <HeaderElementWrap>
                             <Settings/>
