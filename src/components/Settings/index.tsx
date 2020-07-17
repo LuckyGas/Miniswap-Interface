@@ -225,14 +225,19 @@ export default function SettingsTab() {
           <AutoColumn  style={{ padding: '1rem' }}>
             <StyledMenuButton onClick={() => {
               setLangStatus("en")
-              
-              console.log( i18next.changeLanguage )
+              console.log( i18n )
               // i18n.language = "en";
-              i18next.changeLanguage('zh-CN',() =>{})
+              i18next.changeLanguage('en',() =>{})
               }}>
                English
             </StyledMenuButton>
-            <StyledMenuButton onClick={() => {setLangStatus("zh")}}>
+            <StyledMenuButton onClick={() => {
+              setLangStatus("zh")
+              console.log( i18n )
+              i18next.changeLanguage('zh-CN',() =>{})
+            }
+             
+            }>
                中文
             </StyledMenuButton>
             {/* <SlippageTabs
