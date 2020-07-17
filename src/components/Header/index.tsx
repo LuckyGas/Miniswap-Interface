@@ -99,15 +99,21 @@ const TestnetWrapper = styled.div`
   // alignItems:center
 `
 
-const NetworkCardC = styled(YellowCard)`
-  // width: fit-content;
-  // margin-right: 10px;
-  // border-radius: 12px;
-  // padding: 8px 12px;
+const NetworkCardCM = styled(YellowCard)`
+border: 2px solid #fcb0aa;
+height:36px;
+padding:0;
+width:36px;
+background: #fff;
+font-size: 14px;
+display:flex;
+align-items:center;
+color:#000000;
+margin-left:40px;
+border-radius:50%;
 `
 const NetworkCard = styled(YellowCard)`
 border: 2px solid #fcb0aa;
-// border-radius: 34px;
 background: #fff;
 font-size: 14px;
 height: 32px
@@ -155,6 +161,7 @@ const HeaderControls = styled.div`
     flex-direction: column;
     `};
 `
+const headHeight = isMobile ? "60px" :'100px';
 
 const NETWORK_LABELS: { [chainId in ChainId]: string | null } = {
   [ChainId.MAINNET]: null,
@@ -183,7 +190,7 @@ export default function Header() {
         {/*</StyledInternalLink>*/}
         {/*.*/}
       {/* </MigrateBanner> */}
-      <RowBetween style={{ maxWidth:'1200px',margin:'0 auto',height:"100px"}}>
+      <RowBetween style={{ maxWidth:'1200px',margin:'0 auto',height: headHeight,paddingLeft:'10px',paddingRight:'10px'}}>
         <HeaderElement>
           <Title >
             <UniIcon id="link" to="/" style={{display:'flex',alignItems:'center'}}>
@@ -203,19 +210,17 @@ export default function Header() {
           </Title>
         </HeaderElement>
         
-        <HeaderControls style={{display:'flex',alignItems:'center',height:'100px'}} >
+        <HeaderControls style={{'display':'flex','alignItems':'center'}} >
           <HeaderElement>
-            <div style={{marginRight:'70px'}}>Developers</div>
-            <div style={{marginRight:'80px'}} >Whitepaper</div>
+            { !isMobile ? <div style={{marginRight:'70px'}}>Developers</div>:null }
+            { !isMobile ? <div style={{marginRight:'80px'}} >Whitepaper</div>:null}
             <TestnetWrapper>
-              
               {!isMobile && NETWORK_LABELS[chainId] && <NetworkCard style={{paddingTop:"0",paddingBottom:0}}>
                   
                     <img src={QianBao} style={{width:"26px",height:'18px',marginRight:'10px'}}/>
                     <span>{NETWORK_LABELS[chainId]}</span>
-                  
-                
                 </NetworkCard>}
+
             </TestnetWrapper>
             {/* <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
               {account && userEthBalance ? (
@@ -226,11 +231,19 @@ export default function Header() {
               <Web3Status />
             </AccountElement> */}
           </HeaderElement>
-          <HeaderElementWrap style={{marginLeft:'60px'}}>
-            {/*<VersionSwitch />*/}
-            <Settings />
-            {/*<Menu />*/}
-          </HeaderElementWrap>
+          { isMobile ? <HeaderElementWrap>
+                            <Settings/>
+                            <NetworkCardCM>
+                                    <img src={QianBao} style={{width:"24px",margin:'0 auto'}}/>
+                            </NetworkCardCM>
+                         </HeaderElementWrap>:
+                          <HeaderElementWrap style={{marginLeft:'60px'}}>
+                              {/*<VersionSwitch />*/}
+                                <Settings/>
+                               {/*<Menu />*/}
+                        </HeaderElementWrap>
+                         }
+         
         </HeaderControls>
       </RowBetween>
     </HeaderFrame>
