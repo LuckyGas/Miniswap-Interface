@@ -41,6 +41,8 @@ const StyledNavLink = styled(NavLink).attrs({
 })`
   ${({ theme }) => theme.flexRowNoWrap}
   align-items: center;
+  margin-left:4%;
+  margin-right:4%;
   justify-content: center;
   height: 3rem;
   flex: 1 0 auto;
@@ -136,7 +138,7 @@ function NavigationTabs({ location: { pathname }, history }: RouteComponentProps
           </RowBetween>
         </Tabs>
       ) : (
-        <Tabs style={{ marginBottom: '20px' }}>
+        <Tabs style={{ marginBottom: '20px',maxWidth:'778px',width:'100%',display:'flex'}}>
           {tabOrder.map(({ path, textKey, regex }) => (
             <StyledNavLink
               id={`${textKey}-nav-link`}

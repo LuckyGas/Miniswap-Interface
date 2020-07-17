@@ -165,9 +165,9 @@ export default function CurrencyInputPanel({
 
   return (
     <InputPanel id={id}>
-      <Container hideInput={hideInput}>
+      <Container hideInput={hideInput} style={{background:'#f4f5ff'}}>
         {!hideInput && (
-          <LabelRow>
+          <LabelRow >
             <RowBetween>
               <TYPE.body color={theme.text2} fontWeight={500} fontSize={14}>
                 {label}
@@ -194,6 +194,7 @@ export default function CurrencyInputPanel({
           {!hideInput && (
             <>
               <NumericalInput
+                style={{background:'#f4f5ff'}}
                 className="token-amount-input"
                 value={value}
                 onUserInput={val => {

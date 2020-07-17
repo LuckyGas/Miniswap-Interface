@@ -17,6 +17,7 @@ import RemoveLiquidity from './RemoveLiquidity'
 import Send from './Send'
 import Swap from './Swap'
 import { RedirectPathToSwapOnly, RedirectToSwap } from './Swap/redirects'
+import NavigationTabs from '../components/NavigationTabs'
 
 const AppWrapper = styled.div`
   display: flex;
@@ -65,6 +66,7 @@ export default function App() {
           </HeaderWrapper>
           <BodyWrapper >
             <Popups />
+            <NavigationTabs />
             <Web3ReactManager >
               <Switch>
                 <Route exact strict path="/swap" component={Swap} />

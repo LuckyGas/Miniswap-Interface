@@ -7,7 +7,7 @@ import ReactGA from 'react-ga'
 import { Provider } from 'react-redux'
 import { NetworkContextName } from './constants'
 import 'inter-ui'
-import './i18n'
+import i18n from './i18n'
 import App from './pages/App'
 import store from './state'
 import ApplicationUpdater from './state/application/updater'
@@ -15,7 +15,7 @@ import TransactionUpdater from './state/transactions/updater'
 import UserUpdater from './state/user/updater'
 import MulticallUpdater from './state/multicall/updater'
 import ThemeProvider, { FixedGlobalStyle, ThemedGlobalStyle } from './theme'
-
+import { I18nextProvider } from 'react-i18next';
 const Web3ProviderNetwork = createWeb3ReactRoot(NetworkContextName)
 
 function getLibrary(provider: any): Web3Provider {

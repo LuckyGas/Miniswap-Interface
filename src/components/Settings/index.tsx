@@ -19,9 +19,12 @@ import { ButtonError } from '../Button'
 import { useSettingsMenuOpen, useToggleSettingsMenu } from '../../state/application/hooks'
 import { Text } from 'rebass'
 import Modal from '../Modal'
-import IconLang from '../../assets/icon_en.png'
+import IconLangEn from '../../assets/icon_en.png'
+import IconLangZh from '../../assets/icon_zh.jpg'
 import IconDown from '../../assets/icon_down.png'
-
+import { useTranslation, Trans, Translation } from 'react-i18next'
+import i18next from 'i18next'
+// let { t ,i18n} = useTranslation()
 const StyledMenuIcon = styled(Settings)`
   height: 20px;
   width: 20px;
@@ -30,6 +33,7 @@ const StyledMenuIcon = styled(Settings)`
     stroke: ${({ theme }) => theme.text1};
   }
 `
+// TextLang
 
 const StyledCloseIcon = styled(X)`
   height: 20px;
@@ -91,7 +95,7 @@ const StyledMenu = styled.div`
 `
 
 const MenuFlyout = styled.span`
-  min-width: 20.125rem;
+  // min-width: 20.125rem;
   background-color: ${({ theme }) => theme.bg1};
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.01), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04),
     0px 24px 32px rgba(0, 0, 0, 0.01);
@@ -105,7 +109,7 @@ const MenuFlyout = styled.span`
   z-index: 100;
 
   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-    min-width: 18.125rem;
+    // min-width: 18.125rem;
     right: -46px;
   `};
 `
@@ -126,6 +130,8 @@ const ModalContentWrapper = styled.div`
 `
 
 export default function SettingsTab() {
+ 
+
   const node = useRef<HTMLDivElement>()
   const open = useSettingsMenuOpen()
   const toggle = useToggleSettingsMenu()
@@ -141,7 +147,7 @@ export default function SettingsTab() {
 
   // show confirmation view before turning on
   const [showConfirmation, setShowConfirmation] = useState(false)
-
+  const [langStatus, setLangStatus]= useState('en');
   useEffect(() => {
     const handleClickOutside = e => {
       if (node.current?.contains(e.target) ?? false) {
@@ -160,7 +166,8 @@ export default function SettingsTab() {
       document.removeEventListener('mousedown', handleClickOutside)
     }
   }, [open, toggle])
-
+  const lanImg = langStatus === 'en' ? IconLangEn : IconLangZh;
+  const { t, i18n } = useTranslation();
   return (
     <StyledMenu ref={node}>
       <Modal isOpen={showConfirmation} onDismiss={() => setShowConfirmation(false)}>
@@ -203,7 +210,7 @@ export default function SettingsTab() {
       <StyledMenuButton onClick={toggle}>
         {/* <StyledMenuIcon /> */}
         <span style={{display:"flex",alignItems:'center'}}
-        ><img src={IconDown} style={{marginRight:'20px'}}/><img src={IconLang} style={{height:"25px"}}/></span>
+        ><img src={IconDown} style={{marginRight:'20px'}}/><img src={lanImg} style={{height:"25px"}}/></span>
 
         {expertMode && (
           <EmojiWrapper>
@@ -215,20 +222,29 @@ export default function SettingsTab() {
       </StyledMenuButton>
       {open && (
         <MenuFlyout>
-          <AutoColumn gap="md" style={{ padding: '1rem' }}>
-            <Text fontWeight={600} fontSize={14}>
-              Transaction Settings
-            </Text>
-            <SlippageTabs
+          <AutoColumn  style={{ padding: '1rem' }}>
+            <StyledMenuButton onClick={() => {
+              setLangStatus("en")
+              
+              console.log( i18next.changeLanguage )
+              // i18n.language = "en";
+              i18next.changeLanguage('zh-CN',() =>{})
+              }}>
+               English
+            </StyledMenuButton>
+            <StyledMenuButton onClick={() => {setLangStatus("zh")}}>
+               中文
+            </StyledMenuButton>
+            {/* <SlippageTabs
               rawSlippage={userSlippageTolerance}
               setRawSlippage={setUserslippageTolerance}
               deadline={deadline}
               setDeadline={setDeadline}
-            />
-            <Text fontWeight={600} fontSize={14}>
+            /> */}
+            {/* <Text fontWeight={600} fontSize={14}>
               Interface Settings
-            </Text>
-            <RowBetween>
+            </Text> */}
+            {/* <RowBetween>
               <RowFixed>
                 <TYPE.black fontWeight={400} fontSize={14} color={theme.text2}>
                   Toggle Expert Mode
@@ -246,15 +262,15 @@ export default function SettingsTab() {
                     : () => setShowConfirmation(true)
                 }
               />
-            </RowBetween>
-            <RowBetween>
+            </RowBetween> */}
+            {/* <RowBetween>
               <RowFixed>
                 <TYPE.black fontWeight={400} fontSize={14} color={theme.text2}>
                   Toggle Dark Mode
                 </TYPE.black>
               </RowFixed>
               <Toggle isActive={darkMode} toggle={toggleDarkMode} />
-            </RowBetween>
+            </RowBetween> */}
           </AutoColumn>
         </MenuFlyout>
       )}
